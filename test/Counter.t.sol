@@ -15,6 +15,10 @@ contract CounterTest is Test {
         counter = ICounter(vm.compile("src/Counter.huff").create(0));
     }
 
+    function testCode() public {
+        emit log_bytes(address(counter).code);
+    }
+
     function testCounter() public {
         assertEq(counter.getValue(), 0);
         counter.setValue(5);
